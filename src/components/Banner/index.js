@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "../../assets/avatar.png";
-import { FaGithub, FaYoutube, FaDribbble } from "react-icons/fa";
+import { FaGithub, FaInstagram } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
@@ -9,11 +9,11 @@ const Banner = () => {
   return (
     <section
       className="min-h-[85vh] lg:min-h-[78vh] flex items-center"
-      id="Home"
+      id="home"
     >
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row lg:items-center lg:gap-x-12">
-          {/* Teks */}
+          {/* Text */}
           <div className="flex-1 text-center font-secondary lg:text-left">
             <motion.h1
               variants={fadeIn("up", 0.3)}
@@ -54,21 +54,11 @@ const Banner = () => {
               viewport={{ once: false, amount: 0.7 }}
               className="mb-8 max-w-lg mx-auto lg:mx-0 font-normal text-lg text-gray-300"
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Unde
-              numquam. Harum deleniti id sapiente.
+              A passionate third-year student exploring the world of web
+              development and design. Currently focused on creating beautiful,
+              functional websites while learning and growing in the tech
+              industry.
             </motion.p>
-            <motion.div
-              variants={fadeIn("up", 0.6)}
-              initial="hidden"
-              whileInView={"show"}
-              viewport={{ once: false, amount: 0.7 }}
-              className="flex max-w-max gap-x-6 items-center mb-12 mx-auto lg:mx-0"
-            >
-              <button className="btn btn-lg">Contact Me</button>
-              <a href="#" className="text-gradient btn-link">
-                My Portfolio
-              </a>
-            </motion.div>
             <motion.div
               variants={fadeIn("up", 0.3)}
               initial="hidden"
@@ -76,19 +66,22 @@ const Banner = () => {
               viewport={{ once: false, amount: 0.7 }}
               className="flex text-[20px] gap-x-6 max-w-max mx-auto lg:mx-0"
             >
-              <a href="#">
-                <FaYoutube />
+              <a
+                href="https://www.instagram.com/meilyansiwy?igsh=OGRsNXJwaHF2aWV1&utm_source=qr"
+                className="hover:text-accent transition-colors duration-300"
+              >
+                <FaInstagram />
               </a>
-              <a href="#">
+              <a
+                href="https://github.com/meyieee"
+                className="hover:text-accent transition-colors duration-300"
+              >
                 <FaGithub />
-              </a>
-              <a href="#">
-                <FaDribbble />
               </a>
             </motion.div>
           </div>
 
-          {/* Gambar */}
+          {/* Image */}
           <motion.div
             variants={fadeIn("down", 0.5)}
             initial="hidden"
@@ -99,7 +92,7 @@ const Banner = () => {
             <img
               src={Image}
               alt="Avatar"
-              className="rounded-full w-[400px] lg:w-[600px] h-[400px] lg:h-[400px] object-cover"
+              className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] object-cover rounded-full border-2 border-accent/50"
             />
           </motion.div>
         </div>
@@ -107,5 +100,4 @@ const Banner = () => {
     </section>
   );
 };
-
 export default Banner;

@@ -11,8 +11,6 @@ const Header = () => {
             <img src={Logo} alt="Logo" className="w-32 h-32" />{" "}
             {/* Adjust width and height */}
           </a>
-          <button className="btn btn-lg">Work with me</button>{" "}
-          {/* Adjust button size */}
         </div>
       </div>
     </header>

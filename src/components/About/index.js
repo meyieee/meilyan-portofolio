@@ -3,13 +3,13 @@ import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
-import avatar2 from "../../assets/avatar2.png"; // Fixed import
+import avatar2 from "../../assets/avatar2.png";
 
 const skills = [
-  { name: "Web Development", percentage: 90 },
-  { name: "UI/UX Design", percentage: 85 },
-  { name: "React.js", percentage: 88 },
-  { name: "Frontend Development", percentage: 85 },
+  { name: "Web Development", percentage: 70 },
+  { name: "UI/UX Design", percentage: 70 },
+  { name: "React.js", percentage: 60 },
+  { name: "Frontend Development", percentage: 75 },
 ];
 
 const About = () => {
@@ -47,9 +47,7 @@ const About = () => {
             className="flex-1"
           >
             <h2 className="h2 text-accent">About me.</h2>
-            <h3 className="h3 mb-4">
-              I'm a Frontend Developer with over 2 years of experience.
-            </h3>
+            <h3 className="h3 mb-4">I am a third year student who loves to explore</h3>
             <p className="mb-6">
               I specialize in creating beautiful and functional websites using
               modern technologies. My passion lies in transforming ideas into
@@ -60,29 +58,20 @@ const About = () => {
             <div className="flex gap-x-6 lg:gap-x-10 mb-12">
               <div>
                 <div className="text-[40px] font-tertiary text-gradient mb-2">
-                  {inView ? <CountUp start={0} end={2} duration={3} /> : null}
+                  {inView ? <CountUp start={0} end={3} duration={3} /> : null}
                 </div>
                 <div className="font-primary text-sm tracking-[2px]">
                   Years of <br />
-                  Experience
+                  Study
                 </div>
               </div>
               <div>
                 <div className="text-[40px] font-tertiary text-gradient mb-2">
-                  {inView ? <CountUp start={0} end={15} duration={3} /> : null}
+                  {inView ? <CountUp start={0} end={8} duration={3} /> : null}
                 </div>
                 <div className="font-primary text-sm tracking-[2px]">
                   Projects <br />
                   Completed
-                </div>
-              </div>
-              <div>
-                <div className="text-[40px] font-tertiary text-gradient mb-2">
-                  {inView ? <CountUp start={0} end={12} duration={3} /> : null}
-                </div>
-                <div className="font-primary text-sm tracking-[2px]">
-                  Satisfied <br />
-                  Clients
                 </div>
               </div>
             </div>
@@ -93,9 +82,26 @@ const About = () => {
                 <div key={index} className="relative">
                   <div className="flex justify-between mb-2">
                     <span className="text-xl font-semibold">{skill.name}</span>
-                    <span className="text-gradient">{skill.percentage}%</span>
+                    <div className="flex items-center">
+                      <motion.span
+                        initial={{ opacity: 0 }}
+                        animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                        transition={{ duration: 1, delay: index * 0.3 }}
+                        className="text-gradient mr-2"
+                      >
+                        {inView ? (
+                          <CountUp
+                            start={0}
+                            end={skill.percentage}
+                            duration={2}
+                            delay={index * 0.3}
+                          />
+                        ) : null}
+                        %
+                      </motion.span>
+                    </div>
                   </div>
-                  <div className="w-full h-3 bg-gray-800 rounded-full">
+                  <div className="w-full h-3 bg-black/50 rounded-full p-[2px]">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={
@@ -103,9 +109,11 @@ const About = () => {
                           ? { width: `${skill.percentage}%` }
                           : { width: 0 }
                       }
-                      transition={{ duration: 1, delay: index * 0.3 }}
-                      className="h-full rounded-full bg-gradient-to-r from-purple-500 to-cyan-500"
-                    />
+                      transition={{ duration: 1.5, delay: index * 0.3, ease: "easeInOut" }}
+                      className="h-full rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 relative"
+                    >
+                      <div className="absolute -right-1 -top-1 w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg" />
+                    </motion.div>
                   </div>
                 </div>
               ))}

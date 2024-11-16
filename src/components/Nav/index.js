@@ -51,20 +51,6 @@ const Nav = () => {
             <BsClipboardData />
           </Link>
           <Link
-            to="experience"
-            activeClass="active"
-            smooth={true}
-            spy={true}
-            offset={-100}
-            duration={800}
-            delay={100}
-            isDynamic={true}
-            spyThrottle={500}
-            className="nav-icon"
-          >
-            <BsBriefcase />
-          </Link>
-          <Link
             to="contact"
             activeClass="active"
             smooth={true}

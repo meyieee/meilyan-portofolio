@@ -3,7 +3,6 @@ import React from "react";
 //components
 import About from "./components/About";
 import Contact from "./components/Contact";
-import Experience from "./components/Experience";
 import Nav from "./components/Nav";
 import Work from "./components/Work";
 import Header from "./components/Header";
@@ -17,7 +16,6 @@ const App = () => {
       <Nav />
       <About />
       <Work />
-      <Experience />
       <Contact />
       <div className="h-[4000px]"></div>
     </div>
