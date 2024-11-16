@@ -7,50 +7,74 @@ const Nav = () => {
   return (
     <nav className="fixed bottom-2 lg:bottom-8 w-full overflow-hidden z-50">
       <div className="container mx-auto">
-        <div className="w-full bg-black/20 h-[60px] backdrop-blur-2xl rounded-full max-w-[460px] mx-auto px-5 flex justify-between item-center text-2xl text-white/50">
+        <div className="w-full bg-black/20 h-[60px] backdrop-blur-md rounded-full max-w-[460px] mx-auto px-5 flex justify-between items-center text-2xl text-white/50">
           <Link
-            to="Home"
+            to="home"
             activeClass="active"
             smooth={true}
             spy={true}
             offset={-200}
-            className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            duration={800}
+            delay={100}
+            isDynamic={true}
+            spyThrottle={500}
+            className="nav-icon"
           >
             <BiHomeAlt />
           </Link>
           <Link
-            to="About"
+            to="about"
             activeClass="active"
             smooth={true}
             spy={true}
-            className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            offset={-100}
+            duration={800}
+            delay={100}
+            isDynamic={true}
+            spyThrottle={500}
+            className="nav-icon"
           >
             <BiUser />
           </Link>
           <Link
-            to="Work"
+            to="work"
             activeClass="active"
             smooth={true}
             spy={true}
-            className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            offset={-100}
+            duration={800}
+            delay={100}
+            isDynamic={true}
+            spyThrottle={500}
+            className="nav-icon"
           >
             <BsClipboardData />
           </Link>
           <Link
-            to="Experience"
+            to="experience"
             activeClass="active"
             smooth={true}
             spy={true}
-            className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            offset={-100}
+            duration={800}
+            delay={100}
+            isDynamic={true}
+            spyThrottle={500}
+            className="nav-icon"
           >
             <BsBriefcase />
           </Link>
           <Link
-            to="Contact"
+            to="contact"
             activeClass="active"
             smooth={true}
             spy={true}
-            className="cursor-pointer w-[60px] h-[60px] flex items-center justify-center"
+            offset={-100}
+            duration={800}
+            delay={100}
+            isDynamic={true}
+            spyThrottle={500}
+            className="nav-icon"
           >
             <BsChatSquareText />
           </Link>
