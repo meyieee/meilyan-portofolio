@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
 import avatar2 from "../../assets/avatar2.png";
+import { getData } from "../../libs/firebase";
+
 
 const skills = [
   { name: "Web Development", percentage: 70 },
@@ -16,6 +18,25 @@ const About = () => {
   const [ref, inView] = useInView({
     threshold: 0.5,
   });
+
+  const [firebaseData, setFirebaseData] = useState(null);
+
+  useEffect(() => {
+    const fetchDescription = async () => {
+      try {
+        const data = await getData("About");
+        if (data) {
+          setFirebaseData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching about description:", error);
+      }
+    };
+
+    fetchDescription();
+  }, []);
+
+  
 
   return (
     <section className="section" id="about" ref={ref}>
@@ -37,7 +58,6 @@ const About = () => {
             {/* Gradient circle behind image */}
             <div className="absolute -z-10 w-[400px] h-[400px] bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-full blur-2xl"></div>
           </motion.div>
-
           {/* Text */}
           <motion.div
             variants={fadeIn("left", 0.5)}
@@ -47,11 +67,11 @@ const About = () => {
             className="flex-1"
           >
             <h2 className="h2 text-accent">About me.</h2>
-            <h3 className="h3 mb-4">I am a third year student who loves to explore</h3>
+            <h3 className="h3 mb-4">
+              {firebaseData?.desc || "Loading..."}
+            </h3>
             <p className="mb-6">
-              I specialize in creating beautiful and functional websites using
-              modern technologies. My passion lies in transforming ideas into
-              reality through code.
+              {firebaseData?.text || "Loading..."}
             </p>
 
             {/* Stats */}
@@ -109,7 +129,11 @@ const About = () => {
                           ? { width: `${skill.percentage}%` }
                           : { width: 0 }
                       }
-                      transition={{ duration: 1.5, delay: index * 0.3, ease: "easeInOut" }}
+                      transition={{
+                        duration: 1.5,
+                        delay: index * 0.3,
+                        ease: "easeInOut",
+                      }}
                       className="h-full rounded-full bg-gradient-to-r from-purple-500 to-cyan-500 relative"
                     >
                       <div className="absolute -right-1 -top-1 w-5 h-5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 shadow-lg" />

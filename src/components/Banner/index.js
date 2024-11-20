@@ -1,11 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "../../assets/avatar.png";
 import { FaGithub, FaInstagram } from "react-icons/fa";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 import { fadeIn } from "../../variants";
+import { getData } from "../../libs/firebase";
 
 const Banner = () => {
+  const [firebaseData, setFirebaseData] = useState(null);
+
+  useEffect(() => {
+    const fetchDescription = async () => {
+      try {
+        const data = await getData("Banner");
+        if (data) {
+          setFirebaseData(data);
+        }
+      } catch (error) {
+        console.error("Error fetching banner description:", error);
+      }
+    };
+
+    fetchDescription();
+  }, []);
+
   return (
     <section
       className="min-h-[85vh] lg:min-h-[78vh] flex items-center"
@@ -22,7 +40,8 @@ const Banner = () => {
               viewport={{ once: false, amount: 0.7 }}
               className="text-[55px] font-bold leading-[0.8] lg:text-[110px]"
             >
-              MEILYAN <span>SIWY</span>
+              {/* MEILYAN <span>SIWY</span> */}
+              {firebaseData?.name || "Loading..."}
             </motion.h1>
             <motion.div
               variants={fadeIn("up", 0.3)}
@@ -54,10 +73,7 @@ const Banner = () => {
               viewport={{ once: false, amount: 0.7 }}
               className="mb-8 max-w-lg mx-auto lg:mx-0 font-normal text-lg text-gray-300"
             >
-              A passionate third-year student exploring the world of web
-              development and design. Currently focused on creating beautiful,
-              functional websites while learning and growing in the tech
-              industry.
+              {firebaseData?.desc || "Loading..."}
             </motion.p>
             <motion.div
               variants={fadeIn("up", 0.3)}
@@ -90,7 +106,8 @@ const Banner = () => {
           >
             <div className="absolute -z-10 w-[500px] h-[500px] lg:w-[700px] lg:h-[700px] bg-gradient-to-r from-purple-600 to-pink-500 rounded-full blur-2xl"></div>
             <img
-              src={Image}
+              src=              {firebaseData?.img || "Loading..."}
+
               alt="Avatar"
               className="w-[300px] h-[300px] lg:w-[400px] lg:h-[400px] object-cover rounded-full border-2 border-accent/50"
             />
